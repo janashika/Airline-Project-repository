@@ -1,0 +1,313 @@
+PaymentDetailsModel:
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+
+namespace PaymentPage.Models
+{
+    public class PaymentDetailsModel
+    {
+        string cardholdername, creditcardnumber, expmonth, expyear, cvv;
+
+
+
+
+        //[Required(ErrorMessage = "Cardholdername cannot be empty")]
+        [RegularExpression(@"[a-zA-Z]", ErrorMessage = "Invalid name or variable length")]
+        public string CardHolderName { get => cardholdername; set => cardholdername = value; }
+
+
+        [Required(ErrorMessage = "Only numbers are accepted")]
+        [RegularExpression(@"[0-9]{13,16}",ErrorMessage = "Invalid number")]
+        
+        
+        public string CreditCardNumber { get => creditcardnumber; set => creditcardnumber = value; }
+
+
+        [Required(ErrorMessage = "Expmonth cannot be empty")]
+        public string ExpMonth { get => expmonth; set => expmonth = value; }
+
+        [Required(ErrorMessage = "Expyear cannot be empty")]
+        public string ExpYear { get => expyear; set => expyear = value; }
+
+
+        //[Required(ErrorMessage = "CVV number cannot be empty")]
+        [RegularExpression(@"[0-9]{3}", ErrorMessage = "Invalid cvv number")]
+        public string Cvv { get => cvv; set => cvv = value; }
+
+    }
+    
+}
+
+
+
+PaymentController:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using PaymentPage.Models;
+
+namespace PaymentPage.Controllers
+{
+    public class PaymentController : Controller
+    {
+        // GET: Payment
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Payment()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Payment(PaymentDetailsModel payment)
+        {
+            if (ModelState.IsValid)
+                ViewBag.Message = "right";
+            else
+                ViewBag.Message = "wrong";
+            return View();
+        }
+
+
+    }
+}
+
+
+
+
+Payment.cshtml:
+
+@model PaymentPage.Models.PaymentDetailsModel
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Contents/FlightPayment.css" rel="stylesheet" />
+</head>
+
+<body>
+   
+    <h1 id="PaymentDetails">PAYMENT DETAILS</h1>
+   
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-40">
+                             @Html.Label("Card Holder Name")
+                            @Html.EditorFor(model => model.CardHolderName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CardHolderName, "", new { @class = "text-danger" })
+                            <br />
+
+                            @Html.Label("Credit Card Number")
+                            @Html.EditorFor(model => model.CreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                            <br />
+
+                            
+                         
+                            <div class="row">
+
+                                @Html.Label("Exp Month")
+                                @Html.DropDownListFor(model => model.ExpMonth,
+                                   Enumerable.Range(1, 12).
+                                   Select(i => new SelectListItem
+                                   {
+                                       Value = i.ToString(),
+                                       Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i)
+                                   }),
+                                       "-- Month --")
+                                @Html.ValidationMessageFor(model => model.ExpMonth)
+                                <br />
+
+                                @Html.Label("Exp Year")
+                                @Html.DropDownListFor(model => model.ExpYear,
+                                  Enumerable.Range(1990, (DateTime.Now.Year + 10) - 1990).
+                                  Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }),
+                                  "-- Year --")
+
+
+                                <br />
+                                <br />
+                                <br/>
+
+
+                                <div class="col-40">
+                                    @Html.LabelFor(model => model.Cvv, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Cvv, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Cvv, "", new { @class = "text-danger" })
+                                    <br />
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="SubmitButton">
+                        <input type="button" value="Proceed with payment" class="btnSubmit" onclick="@("window.location.href='"+Url.Action("--action name--","--controller name--")+"'");"/>
+                    </div>
+                }
+
+            </div>
+        
+        <div>
+            @ViewBag.Message
+        </div>
+    </div>
+ </div>
+
+</body>
+</html>
+
+
+
+
+
+
+FlightPayment.css:
+
+body {
+    background-image: url('../Content/Image/flight4.jpg.png');
+    /*background-image: url('../Content/Image/backgrdpayment.jpg');*/
+    /*background-image: url('../Content/Image/flight2.jpg');*/
+     background-size: cover;
+    margin: 0% 25% 0% 25%;
+}
+*{
+            font-family: Arial;
+            font-size: 17px;
+            padding: 8px;
+            }
+
+*{
+            box-sizing: border-box;
+        }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%;
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%;
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%;
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 4px solid lightgrey;
+    border-radius: 3px;
+}
+
+input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+#PaymentProcess{
+   
+}
+#PaymentDetails {
+    font-size: 60px;
+    position: relative;
+    left: 40px;
+    letter-spacing:1PX;
+}
+.SubmitButton{
+    position:relative;
+    left:160px;
+
+}
+.btnSubmit{
+    width:auto;
+    height:36px;
+    border:none;
+    background:transparent;
+    border:2px solid blue;
+}
+    .btnSubmit:hover{
+        background-color:blue;
+        color:white;
+    }
+
+    label {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.btn {
+    background-color: darkgreen;
+    color: white;
+    padding-right: 12px;
+    margin: 10px 0;
+    border: none;
+    position: center;
+    width: 80px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+    .btn:hover {
+        background-color: lightgray;
+    }
+
+a {
+    color: lightblue;
+}
+
+hr {
+    border: 1px solid lightgrey;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+
+
