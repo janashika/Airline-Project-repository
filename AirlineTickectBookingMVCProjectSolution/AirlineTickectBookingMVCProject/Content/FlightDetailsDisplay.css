@@ -1,0 +1,86 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: lightblue;
+}
+
+nav {
+    position: sticky;
+    width: 100%;
+    background-color: black;
+}
+
+.logo-bar {
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    background-color: black;
+    height: auto;
+    color: blueviolet;
+    font-family: Microsoft JhengHei;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+header {
+    position: relative;
+    left: 35%;
+    font-size: 2em;
+    color: white;
+    font-family: Microsoft JhengHei;
+    font-weight: lighter;
+    text-shadow: 2px 2px gray;
+}
+
+.bgHeader {
+    background-color: black;
+    padding: 20px;
+    position: sticky;
+}
+
+.tblFlights {
+    width: 92%;
+    position: relative;
+    left: 4%;
+    box-shadow: 20px 10px 40px lightgrey;
+    border-color: rebeccapurple;
+}
+
+th {
+    position: sticky;
+}
+
+td {
+    height: 150px;
+}
+
+p {
+    padding-bottom: 25px;
+    padding-left: 10px;
+    padding-top: 50px;
+    font-size: 18px;
+}
+
+#btnSearchFlights {
+    background: transparent;
+    background-color: transparent;
+    border: 2px solid green;
+    font-size: 22px;
+    font-weight: lighter;
+    font-family: Calibri;
+    color: white;
+    padding: 10px 15px;
+    width: 160px;
+    border-radius: 0px;
+}
+
+button {
+    padding-left: 90px;
+}
+
+#btnSearchFlights:hover {
+    background: blueviolet;
+    color: white;
+    border-color: blueviolet;
+}
