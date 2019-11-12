@@ -1,0 +1,91 @@
+﻿body {
+     font-family: sans-serif;
+    background-size: cover;
+ }
+
+.loginForm {
+    width: 320px;
+    height: 420px;
+    background: transparent;
+    top: 48%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 80px 30px 60px 30px;
+}
+
+.backgroundoflogin {
+    width: 320px;
+    height: 450px;
+    opacity: 0.8;
+    background: #000;
+    top: 48%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+}
+
+.loginForm input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.logingetdetails {
+    border: none;
+    border-bottom: 1px solid darkviolet;
+    outline: none;
+    background: transparent;
+    height: 60px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.loginForm input[type="submit"] {
+    outline: none;
+    width: 80px;
+    border: 1px solid darkviolet;
+    height: 40px;
+    color: #000;
+    font-size: 18px;
+    background: darkviolet;
+    border-radius: 0px;
+}
+
+    .loginForm input[type="submit"]:hover {
+        cursor: pointer;
+        border: none;
+        background: royalblue;
+        border-color: darkviolet;
+        color: #000;
+    }
+
+.loginForm a {
+    line-height: 20px;
+    font-size: 12px;
+    color: darkgrey;
+    text-decoration: none;
+}
+
+    .loginForm a:hover {
+        color: royalblue;
+    }
