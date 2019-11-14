@@ -35,7 +35,7 @@ namespace AirlineTickectBookingMVCProject.Models
             public string Gender { get => gender; set => gender = value; }
 
             [Required(ErrorMessage = "Date of Birth cannot be Empty")]
-            [Range(1, 100, ErrorMessage = "Age must be between 1-100 in years.")]
+            //[Range(1, 100, ErrorMessage = "Age must be between 1-100 in years.")]
             // public string DateOfBirth { get => DateOfBirth1; set => DateOfBirth1 = value; }
             [Display(Name = "Date Of Birth")]
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy}")]

@@ -9,35 +9,26 @@ using SearchFlightModelLibrary;
 
 namespace AirlineTickectBookingMVCProject.Controllers
 {
+    [HandleError]
     public class FlightSearchController : Controller
     {
+        RegBL bl = new RegBL();
         public ActionResult Search()
         {
             FlightSearchResult places = new FlightSearchResult();
+            List<string> s_myList = bl.FetchPlaceNames();
+            List<string> d_myList = bl.FetchPlaceNames();
+            places.BoardingFrom = new SelectList(s_myList);
+            places.LandingIn = new SelectList(d_myList);
             if (ModelState.IsValid)
             {
-                List<string> s_myList = new List<string>();
-                List<string> d_myList = new List<string>();
-                s_myList.Add("Chennai");
-                s_myList.Add("Hyderabad");
-                s_myList.Add("Goa");
-                s_myList.Add("Thiruvananthapuram");
-                s_myList.Add("Mumbai");
-                s_myList.Add("Bengaluru");
-                places.BoardingFrom = new SelectList(s_myList);
-
-                d_myList.Add("Chennai");
-                d_myList.Add("Hyderabad");
-                d_myList.Add("Goa");
-                d_myList.Add("Thiruvananthapuram");
-                d_myList.Add("Mumbai");
-                d_myList.Add("Bengaluru");
-                places.LandingIn = new SelectList(d_myList);
-
+                return View(places);
             }
-           
+           else
+            {
+                return View("Search");
+            }
 
-            return View(places);
         }
         
         [HttpPost]
@@ -45,51 +36,49 @@ namespace AirlineTickectBookingMVCProject.Controllers
         {
            
             // return fg.FlightDate.ToShortDateString()+ " "+fg.Boarding+" "+fg.Landing+""+fg.NoOfPassangers;
-            RegBL bl = new RegBL();
+           
             List<FlightChild> flights = new List<FlightChild>();
             FlightChild flight = null;
-
-            List<SearchFlight> modelFlights = bl.getDetails(fg.FlightDate.ToShortDateString(), fg.Boarding, fg.Landing);
-           
-            foreach (SearchFlight item in modelFlights)
+            //if(String.Equals(fg.Boarding,fg.Landing))
+            //{
+            //    ViewBag.Mesage = "Source And destination are same.Please try again ";
+            //}
+            if((fg.Boarding!=null)&&(fg.Landing!=null))
             {
-                flight = new FlightChild();
-                flight.Flightid = item.Flightid;
-                flight.Departuretime = item.Departuretime;
-                flight.Arrivaltime = item.Arrivaltime;
-                flight.Duration = item.Duration;
-                flight.Fare = item.Fare;
-                flights.Add(flight);
+                try
+                {
+                    List<SearchFlight> modelFlights = bl.getDetails(fg.FlightDate.ToShortDateString(), fg.Boarding, fg.Landing);
+
+                    foreach (SearchFlight item in modelFlights)
+                    {
+                        flight = new FlightChild();
+                        flight.Flightid = item.Flightid;
+                        flight.Departuretime = item.Departuretime;
+                        flight.Arrivaltime = item.Arrivaltime;
+                        flight.Duration = item.Duration;
+                        flight.Fare = item.Fare;
+                        flights.Add(flight);
+                    }
+                }
+                catch (NoFlightInDatabaseException noflightException)
+                {
+                    ViewBag.Message = noflightException.Message;
+                }
+                catch (Exception exception)
+                {
+                    ViewBag.Message = exception.Message;
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Invalid source and destination.Try Again!!!!";
             }
             return View("SearchFlightPage", flights);
         }
         [HttpGet]
         public ActionResult SearchFlightPage(FlightChild fl)
         {
-           //List<FlightChild> flights = fl;
             return View(fl);
         }
-
-        //private List<FlightChild> GetAllUserFromBL(FlightSearchResult fl)
-        //{
-        //    RegBL bl = new RegBL();
-        //    List<FlightChild> flights = new List<FlightChild>();
-        //    FlightChild flight = null;
-        //    List<SearchFlight> modelUsers = bl.getDetails("02-11-2019", fl.Boarding,fl.Landing);
-        //    flight = new FlightChild();
-        //    foreach (SearchFlight item in modelUsers)
-        //    {
-
-        //        flight.Flightid = item.Flightid;
-        //        flight.Departuretime = item.Departuretime;
-        //        flight.Arrivaltime = item.Arrivaltime;
-        //        flight.Duration = item.Duration;
-        //        flight.Fare = item.Fare;
-        //        flights.Add(flight);
-        //    }
-        //    return flights;
-
-        //}
-
     }
 }

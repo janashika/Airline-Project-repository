@@ -1,0 +1,59 @@
+﻿body {
+    font-family: Jockey one;
+    background-color: #2C3335;
+    color: white;
+    background-image: url('eb707ae7096cc8df384f1bf87dab547a.gif');
+    background-size: cover;
+}
+
+.h {
+    color: #fff;
+}
+
+.label {
+    font-size: medium;
+}
+
+.button {
+    display: block;
+    width: 25%;
+    border: none;
+    background-color: #ddd;
+    color: white;
+    padding: 14px 14px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+}
+
+    .button:hover {
+        background-color: rebeccapurple;
+        color: black;
+    }
+
+.txt {
+    width: 35%;
+    color: black;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    border-bottom: 4px solid rebeccapurple;
+}
+
+.total {
+    position: absolute;
+    width: 400px;
+    height: 350px;
+    left: 450px;
+    top: 200px;
+    background: inherit;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.h {
+    color: black;
+}

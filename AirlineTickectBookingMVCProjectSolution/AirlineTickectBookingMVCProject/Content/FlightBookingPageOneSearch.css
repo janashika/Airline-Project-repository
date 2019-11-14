@@ -1,5 +1,5 @@
 ﻿body {
-    margin-top:20%;
+    margin:0;
     padding: 0;
     background: url(SearchBackgroundImage.jpg);
     font-family: sans-serif;
@@ -13,7 +13,7 @@
 
 .SearchPage {
     width: 630px;
-    height: 1000px;
+    height: auto;
     background: #ffffff;
     position: absolute;
     top: 50%;

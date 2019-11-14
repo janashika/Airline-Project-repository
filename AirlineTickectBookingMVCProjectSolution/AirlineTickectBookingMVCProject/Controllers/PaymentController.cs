@@ -7,6 +7,7 @@ using AirlineTickectBookingMVCProject.Models;
 
 namespace AirlineTickectBookingMVCProject.Controllers
 {
+    [HandleError]
     public class PaymentController : Controller
     {
         // GET: Payment

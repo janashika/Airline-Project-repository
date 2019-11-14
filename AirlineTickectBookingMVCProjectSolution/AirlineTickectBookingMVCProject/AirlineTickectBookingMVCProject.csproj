@@ -125,6 +125,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PreviewController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -135,6 +136,7 @@
     <Compile Include="Models\PassangerModel.cs" />
     <Compile Include="Models\PassengersList.cs" />
     <Compile Include="Models\PaymentDetailsModel.cs" />
+    <Compile Include="Models\PreviewModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,6 +159,7 @@
     <Content Include="Content\RegisterPageBackground.jpg" />
     <Content Include="Content\RegistrationStyleSheet.css" />
     <Content Include="Content\SearchBackgroundImage.jpg" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -195,9 +198,11 @@
     <Content Include="Views\FlightSearch\Search.cshtml" />
     <Content Include="Views\Payment\Payment.cshtml" />
     <Content Include="Views\Passenger\addPassenger.cshtml" />
-    <Content Include="Views\Passenger\Create.cshtml" />
     <Content Include="Views\Shared\_AllPageNavbar.cshtml" />
     <Content Include="Views\Shared\_FirstThreePageNavbar.cshtml" />
+    <Content Include="Views\Passenger\Create.cshtml" />
+    <Content Include="Views\Passenger\addPassengers.cshtml" />
+    <Content Include="Views\Preview\DisplayPassengerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -216,11 +221,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FlightBookingSearchPage\SearchFlightModelLibrary\SearchFlightModelLibrary.csproj">
+    <ProjectReference Include="..\SearchFlightModelLibrary\SearchFlightModelLibrary.csproj">
       <Project>{557fc106-22db-4a7f-a16a-bf370c16e5c3}</Project>
       <Name>SearchFlightModelLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\FlightBookingSearchPage\User_Reg_BL_Library\User_Reg_BL_Library.csproj">
+    <ProjectReference Include="..\User_Reg_BL_Library\User_Reg_BL_Library.csproj">
       <Project>{fa6f4b5e-98a3-4f81-8b09-5c0919b18127}</Project>
       <Name>User_Reg_BL_Library</Name>
     </ProjectReference>

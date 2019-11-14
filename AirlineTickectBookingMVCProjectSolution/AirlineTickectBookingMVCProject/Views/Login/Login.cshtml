@@ -28,8 +28,8 @@
         {
             @Html.AntiForgeryToken()
             <link href="~/Content/LoginStyleSheet.css" rel="stylesheet" />
-            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { placeholder = "Enter phone number", @class = "logingetdetails", @type = "number" } })
-            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Gmail, new { htmlAttributes = new { placeholder = "Enter Gmail address", @class = "logingetdetails" } })
+            @Html.ValidationMessageFor(model => model.Gmail, "", new { @class = "text-danger" })
 
             <!--<input type="password" placeholder="Password" name="" />-->
             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Enter password", @class = "logingetdetails", @type = "password" } })
@@ -38,8 +38,8 @@
             <br />
 
             <input type="submit" name="" value="login" @*onclick="location.href='@Url.Action("Search","FlightSearch")'"*@ />
-            <a href="#">Don't have an account?</a>
-            @*@Html.ActionLink("Don't have an account?","Registration")*@
+            @*<a href="#">Don't have an account?</a>*@
+            @Html.ActionLink("Don't have an account?","Registration","Registration")
             <p style="color:red">
                 @ViewBag.Message
             </p>

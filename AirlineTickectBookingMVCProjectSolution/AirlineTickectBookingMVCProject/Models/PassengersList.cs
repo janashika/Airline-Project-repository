@@ -7,13 +7,12 @@ namespace AirlineTickectBookingMVCProject.Models
 {
     public class PassengersList
     {
-         static List<PassangerModel> passangers;
+        static List<PassangerModel> passangers;
         public PassengersList()
         {
             Passangers = new List<PassangerModel>();
         }
 
-        
         public List<PassangerModel> Passangers { get => passangers; set => passangers = value; }
     }
 }

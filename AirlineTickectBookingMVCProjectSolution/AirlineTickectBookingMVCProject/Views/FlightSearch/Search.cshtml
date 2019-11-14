@@ -22,7 +22,6 @@
         <title></title>
         <script>
             $(document).ready(function () {
-
                 $("#swap").on('click', function () {
                     var pickup = $('#txt-source').val();
                     $('#txt-source').val($('#txt-destination').val());
@@ -36,26 +35,28 @@
             }
         </script>
     </head>
-     <body>
-         <div>
-             <nav class="navbar navbar-expand-sm   navbar-dark   fixed-top" style="background:transparent;">
+    <body>
+        <div>
+            @*<nav class="navbar navbar-expand-sm   navbar-dark   fixed-top" style="background:transparent;">*@
 
-                 <div class="logo-bar" style="position:sticky">
-                     <h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">
-                         
-                         <button type="submit" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:950px; " onclick="location.href='@Url.Action("Login","Login")'">
-                             <span class="glyphicon glyphicon-share"></span>
-                             LOG OUT
-                         </button>
-                         <button type="submit" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:10px; " onclick="location.href='@Url.Action("Login","Login")'">
-                             <span class="glyphicon glyphicon-home"></span>
-                             HOME
-                         </button>
-                     </h2>
-                 </div>
-             </nav>
+            <div class="logo-bar" style="position:sticky">
+                <h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">
 
-         </div>
+                    <input type="button" value="LOG OUT" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:950px; " onclick="location.href='@Url.Action("Login","Login")'" />
+                    <span style="position:relative;top:10px;" class="glyphicon glyphicon-share"></span>
+
+  
+                        <input type="button" value="HOME" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:10px; " onclick="location.href='@Url.Action("Login","Login")'" />
+                        <span style="position:relative;top:10px;"class="glyphicon glyphicon-home"></span>
+ 
+
+
+                </h2>
+        </div>
+              
+            @*</nav>*@
+
+        </div>
         <div class="SearchPage">
 
             <br />
@@ -72,7 +73,7 @@
                             <p style="font-size:15px;color:blue;"> <b>Boarding </b></p>
 
                             @*@Html.LabelFor(model => model.Boarding, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                            @Html.DropDownListFor(model => model.Boarding, Model.BoardingFrom, "",  new { @class = "txtSourceList", id = "txt-source" })
+                            @Html.DropDownListFor(model => model.Boarding, Model.BoardingFrom, "", new { @class = "txtSourceList", id = "txt-source" })
                             @Html.ValidationMessageFor(model => model.Boarding, "", new { @class = "text-danger" })
 
 
@@ -80,7 +81,7 @@
 
                         <td>
                             <p id="bothIcon">
-                                <button type="button" id="swap" class="btn btn-default btn-sm">
+                                <button type="button" id="swap" style="transform:rotate(90deg); width:12px;" class="btn btn-default btn-sm">
                                     <span class="glyphicon glyphicon-sort"></span>
                                 </button>
                             </p>
@@ -97,7 +98,7 @@
                         </td>
                     </tr>
                 </table>
-                <br /><br /><br/>
+                <br /><br /><br />
                 <p style="font-size:15px;color:blue;">Departure date</p>
                 @*@Html.Label("Landing")*@
                 <p style="font-size:93px;color:blue;">
@@ -120,7 +121,7 @@
 
             </form>
             <p class="btnSearchFlights">
-                <button type="submit" class="btn btn-default" id="btnSearchFlights" onclick="location.href='@Url.Action("SearchFlightPage", "FlightSearch")'">SEARCH FLIGHTS</button>
+                <button type="submit" class="btn btn-default" id="btnSearchFlights" @*onclick="location.href='@Url.Action("SearchFlightPage", "FlightSearch")'"*@>SEARCH FLIGHTS</button>
 
             </p>
             <p style="color:darkgray">&copy; 2019. GizBiz Airways</p>
@@ -132,5 +133,3 @@
     </body>
 </html>
 }
-
-
