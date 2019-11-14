@@ -14,7 +14,7 @@ namespace Airline_Reg_DAL_Library
     public class RegDAL
     {
         SqlConnection conn;
-        SqlCommand cmdInsertUser, cmdFetchPassword,cmdFetchFlightDetails, cmdAddPassager;
+        SqlCommand cmdInsertUser, cmdFetchPassword,cmdFetchFlightDetails, cmdAddPassager, cmdFetchCityName, cmdFetchDetails;
         public RegDAL()
         {
             conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conRegister"].ConnectionString);
@@ -23,7 +23,7 @@ namespace Airline_Reg_DAL_Library
         public bool Insert_user(string ufname, string ulname, DateTime dob, string nat, string pnum, string gender, string gmail, string password)
         {
             bool return_value = false;
-            cmdInsertUser = new SqlCommand("Insert_User", conn);
+            cmdInsertUser = new SqlCommand("Insert_User_data", conn);
             cmdInsertUser.Parameters.Add("@ufname", SqlDbType.VarChar, 20);
             cmdInsertUser.Parameters.Add("@ulname", SqlDbType.VarChar, 20);
             cmdInsertUser.Parameters.Add("@dob", SqlDbType.Date);
@@ -55,7 +55,7 @@ namespace Airline_Reg_DAL_Library
         public string FetchPassword(string gmail)
         {
             cmdFetchPassword = new SqlCommand("proc_login", conn);
-            cmdFetchPassword.Parameters.Add("@p_n", SqlDbType.VarChar, 20);
+            cmdFetchPassword.Parameters.Add("@gmail", SqlDbType.VarChar, 20);
             cmdFetchPassword.Parameters.Add("@pass", SqlDbType.VarChar, 20);
             cmdFetchPassword.CommandType = CommandType.StoredProcedure;
             string password = null;
@@ -84,6 +84,8 @@ namespace Airline_Reg_DAL_Library
             cmdFetchFlightDetails.Parameters[2].Value = destination;
             SqlDataReader drFlightDetails = cmdFetchFlightDetails.ExecuteReader();
             SearchFlight search = null;
+            if (drFlightDetails.HasRows == false)
+                throw new NoFlightInDatabaseException();
             while (drFlightDetails.Read())
             {
                 search = new SearchFlight();
@@ -118,7 +120,43 @@ namespace Airline_Reg_DAL_Library
 
 
         }
+        public List<string> FetchCityName()
+        {
+            List<string> cityName = new List<string>();
+            cmdFetchCityName = new SqlCommand("proc_FetchCityName", conn);
+            conn.Open();
+            SqlDataReader drCityName= cmdFetchCityName.ExecuteReader();
+            while (drCityName.Read())
+            {
+                cityName.Add(drCityName[0].ToString());
+            }
+            conn.Close();
+            return cityName;
+        }
+        //public List<PreviewDetailsModel> GetPreviewDetails()
+        //{
+        //    List<PreviewDetailsModel> users = new List<PreviewDetailsModel>();
+        //    OpenConnection();
+        //    cmdFetchDetails = new SqlCommand("proc_refDetails", conn);
+        //    cmdFetchDetails.CommandType = CommandType.StoredProcedure;
+        //    SqlDataReader drUsers = cmdFetchDetails.ExecuteReader();
+        //    PreviewDetailsModel user = null;
+        //    while (drUsers.Read())
+        //    {
+        //        user = new PreviewDetailsModel();
+        //        user.S_Id = drUsers[0].ToString();
+        //        user.Des_Id = drUsers[1].ToString();
+        //        user.Departure_Time = drUsers[2].ToString();
+        //        user.Arrival_Time = drUsers[3].ToString();
+        //        user.Passenger = drUsers[4].ToString();
+        //        user.Booked_Date = drUsers[5].ToString();
+        //        user.Fare = drUsers[6].ToString();
 
+        //        users.Add(user);
+        //    }
+        //    conn.Close();
+        //    return users;
+        //}
     }
 }
 

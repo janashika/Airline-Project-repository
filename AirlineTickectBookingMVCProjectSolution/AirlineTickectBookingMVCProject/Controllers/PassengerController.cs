@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using AirlineTickectBookingMVCProject.Models;
 using User_Reg_BL_Library;
-
 namespace AirlineTickectBookingMVCProject.Controllers
 {
     public class PassengerController : Controller
@@ -19,7 +18,9 @@ namespace AirlineTickectBookingMVCProject.Controllers
         public ActionResult Create()
         {
             // PassangerModel passenger = new PassangerModel();
-
+            if (ModelState.IsValid)
+            {
+            }
             return View();
         }
         [HttpPost]
@@ -38,9 +39,7 @@ namespace AirlineTickectBookingMVCProject.Controllers
             }
             return RedirectToAction("addPassenger");
 
-
         }
-
         public ActionResult addPassenger()
         {
             int passangerCount = Convert.ToInt32(TempData["cd"].ToString());
@@ -55,13 +54,9 @@ namespace AirlineTickectBookingMVCProject.Controllers
                     passengers.Passangers.Add(passenger);
                 }
 
-
             }
-
             return View(passengers);
-
         }
-
         [HttpPost]
         public string addPassenger(PassengersList passengersList)
         {
@@ -79,7 +74,6 @@ namespace AirlineTickectBookingMVCProject.Controllers
                     ViewBag.message = "not added";
                 }
             }
-
             return ViewBag.message;
 
         }

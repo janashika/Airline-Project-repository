@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<AirlineTickectBookingMVCProject.Models.FlightChild>
 
 @{
-    
-}
+    Layout = null;
+ }
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,29 @@
 </head>
 <body>
 
+         @*<nav class="navbar navbar-expand-sm   navbar-dark   fixed-top" style="background:transparent;">*@
 
+        <div class="logo-bar" style="position:sticky">
+            <h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">
+
+                <input type="button" value="PREVIOUS" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:2px; " onclick="location.href='@Url.Action("Search","FlightSearch")'" />
+
+                <input type="button" value="LOG OUT" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:650px; " onclick="location.href='@Url.Action("Login","Login")'" />
+                <span style="position:relative;top:10px;" class="glyphicon glyphicon-share"></span>
+
+
+                <input type="button" value="HOME" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:10px; " onclick="location.href='@Url.Action("LoginOrSignup","Login")'" />
+                <span style="position:relative;top:10px;" class="glyphicon glyphicon-home"></span>
+
+
+
+
+            </h2>
+        </div>
+
+        @*</nav>*@
+
+ 
     <div class="bgHeader">
         <br />
         <br />
@@ -91,9 +113,12 @@
 
             }
         </table>
+        <div>
+            <p style="padding:15px; font-weight:bolder;font-size:32px;letter-spacing:2px;margin-left:200px;color:red;">
+                @ViewBag.Message
+            </p>
+           
+        </div>
     </div>
 </body>
 </html>
-
-
-

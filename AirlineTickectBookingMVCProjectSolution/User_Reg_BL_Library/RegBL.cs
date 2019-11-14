@@ -20,10 +20,10 @@ namespace User_Reg_BL_Library
             return dal.Insert_user(ufname, ulname, dob, nat, pnum, gender, gmail, password);
         }
 
-        public bool Login(string phonenumber, string password)
+        public bool Login(string gmail, string password)
         {
             bool loginStatus = false;
-            string databasePassword = dal.FetchPassword(phonenumber);
+            string databasePassword = dal.FetchPassword(gmail);
             if (databasePassword == password)
                 loginStatus = true;
             return loginStatus;
@@ -38,7 +38,14 @@ namespace User_Reg_BL_Library
             return dal.Add_Passanger(ps_name, ps_age, ps_gender);
         }
 
-
+        public List<string> FetchPlaceNames()
+        {
+            return dal.FetchCityName();
+        }
+        public List<PreviewDetailsModel> PrintPreviewDetails()
+        {
+            return previewDAL.GetPreviewDetails();
+        }
     }
 }
 

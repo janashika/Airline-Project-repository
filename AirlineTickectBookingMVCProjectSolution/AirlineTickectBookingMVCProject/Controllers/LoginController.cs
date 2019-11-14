@@ -8,6 +8,7 @@ using User_Reg_BL_Library;
 
 namespace AirlineTickectBookingMVCProject.Controllers
 {
+    [HandleError]
     public class LoginController : Controller
     {
         // GET: Login
@@ -29,7 +30,7 @@ namespace AirlineTickectBookingMVCProject.Controllers
             RegBL bl = new RegBL();
             if (ModelState.IsValid)
             {
-                if (bl.Login(login.PhoneNumber, login.Password))
+                if (bl.Login(login.Gmail, login.Password))
                 {
                     // ViewBag.Message = " Invalid phone password right";
                     return RedirectToAction("Search", "FlightSearch");
@@ -44,6 +45,7 @@ namespace AirlineTickectBookingMVCProject.Controllers
 
             return View();
         }
+
 
     }
 }

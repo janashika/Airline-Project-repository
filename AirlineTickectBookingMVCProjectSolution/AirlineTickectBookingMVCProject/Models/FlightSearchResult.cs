@@ -7,9 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 
 
+
 namespace AirlineTickectBookingMVCProject.Models
 {
-    public class FlightSearchResult
+    public class FlightSearchResult : IComparable<FlightSearchResult>
     {
         string noOfPassangers;
         SelectList boardingFrom;
@@ -31,6 +32,16 @@ namespace AirlineTickectBookingMVCProject.Models
         public SelectList LandingIn { get => landingIn; set => landingIn = value; }
         public string Boarding { get => boarding; set => boarding = value; }
         public string Landing { get => landing; set => landing = value; }
-
+        public override bool Equals(object obj)
+        {
+            if (this.Boarding == ((FlightSearchResult)obj).Boarding)
+                return true;
+            else
+                return false;
+        }
+        public int CompareTo(FlightSearchResult other)
+        {
+            return this.Boarding.CompareTo(other.boarding);
+        }
     }
 }
