@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Jagan's Successfull Landing Page</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Responsive View Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Animate.CSS -->
+    <link rel="stylesheet" href="css/animate.css"> 
+
+    <!-- Font Awesome Style -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Bootstrap Style -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Reset Style -->
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/main.css">
+
+     <!-- Flip Clock -->
+    <link rel="stylesheet" href="css/flipclock.css">
+    
+
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- screen loader start -->
+    <div class="screen-loader"></div><!-- screen loader end -->
+    <!-- preload start -->
+    <div id="preload">
+        <!-- preload status start -->
+        <div id="preload-status"></div><!-- preload status end -->
+    </div><!-- preload end -->
+    <!-- === Header Section === -->
+    <div id="container">
+        <!-- +++ Intro Section ++++ -->
+        <section class="intro">
+            <!-- Intro Section Background-image -->
+            <div class="intro-image"></div>
+
+            <!-- ====+++ Intro Section Content +++==== -->
+            <div class="center-content">
+
+
+                <div class="intro-content text-center">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h2 class="text-logo">Successfully Booked Your Ticket</h2>
+                    </div><!-- /End logo -->
+                    <!-- ==== Main Heading ==== -->
+                    <h1 class="intro-title">Thank You For Choosing GisBiz AirWays<span class="obak">!</span></h1>
+
+                    <!-- Spin Clock -->
+                    <i class="fa fa-clock-o fa-spin fa-4x fa-clock-spin"></i>
+                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                    <div>
+                        <div class="clock" style="margin-left:27.5%;" align="center"></div>
+                        <div class="message"></div>
+                    </div>
+
+                    <!-- ==== Intro Section Sub-Heading ==== -->
+                    <br />
+                    <br />
+                    <div class="intro-subtitle">
+                        <p>Have A Pleasant Journey</p>
+                    </div>
+
+                </div> <!-- /End Intro Section Content -->
+            </div>
+            <!-- ==== Intro Section Bottom Content ==== -->
+            <div class="container-bottom-content">
+
+                <!-- ==== Trigger Button ==== -->
+                <button class="trigger">
+                    <svg width="100%" height="100%" viewBox="0 0 60 60" preserveAspectRatio="none">
+                        <g class="icon icon-grid">
+                            <rect x="32.5" y="5.5" width="22" height="22" />
+                            <rect x="4.5" y="5.5" width="22" height="22" />
+                            <rect x="32.5" y="33.5" width="22" height="22" />
+                            <rect x="4.5" y="33.5" width="22" height="22" />
+                        </g>
+                        <g class="icon icon-cross">
+                            <line x1="4.5" y1="55.5" x2="54.953" y2="5.046" />
+                            <line x1="54.953" y1="55.5" x2="4.5" y2="5.047" />
+                        </g>
+                    </svg>
+                    <span>View content</span>
+                </button>
+            </div> <!-- /End Intro Section Bottom Content -->
+        </section><!-- /end intro section -->
+        <!-- +++ Trigger After Content +++ -->
+        <section class="content-wrapper">
+           
+       
+           
+        </section> <!-- /End Trigger Content -->
+    </div>
+
+
+    <!-- jQuery Library -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <!-- Modernizer -->
+    <script src="js/modernizr.custom.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Classie JS -->
+    <script src="js/classie.js"></script>
+    <!-- Countdown JS -->
+    <script src="js/jquery.downCount.js"></script>
+    <!-- Nice Scroll JS -->
+    <script src="js/jquery.nicescroll.3.5.4.js"></script>
+    <!-- Flip Clock -->
+    <script src="js/flipclock.js"></script>
+    <!-- Style Switcher JS -->
+    <script src="switcher/switcher.js"></script>
+    <!-- Plugin Initialization js -->
+    <script src="js/plugins.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+                function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+            e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+            e.src = '//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r)
+        }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
+    </script>
+    <script type="text/javascript">
+        var clock;
+
+        $(document).ready(function () {
+            var clock;
+
+            clock = $('.clock').FlipClock({
+                clockFace: 'DailyCounter',
+                autoStart: false,
+                callbacks: {
+                    stop: function () {
+                        $('.message').html('The clock has stopped!')
+                    }
+                }
+            });
+
+            clock.setTime(220880);
+            clock.setCountdown(true);
+            clock.start();
+
+        });
+    </script>
+
+</body>
