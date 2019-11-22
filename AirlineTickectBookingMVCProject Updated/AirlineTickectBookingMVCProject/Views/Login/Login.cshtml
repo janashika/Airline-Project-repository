@@ -1,0 +1,58 @@
+﻿@model AirlineTickectBookingMVCProject.Models.LoginModel
+
+@{
+    Layout = "~/Views/Shared/_FirstThreePageNavbar.cshtml";
+
+}
+ <!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/LoginStyleSheet.css" rel="stylesheet" />
+    <style>
+        body {
+            background: url('../../Content/loginbackground.jpg');
+        }
+    </style>
+   
+    <script language="javascript" type="text/javascript">
+    window.history.forward();
+    </script>
+</head>
+
+<body>
+    <div class="backgroundoflogin">
+        <br /><br />
+    </div>
+    <div class="loginForm">
+        <br /><br />
+        <img src="~/Content/loginlogo.jpg" class="avatar" />
+        <h1>Login Here</h1>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <link href="~/Content/LoginStyleSheet.css" rel="stylesheet" />
+            @Html.EditorFor(model => model.Gmail, new { htmlAttributes = new { placeholder = "Enter Email address", @class = "logingetdetails" } })
+            @Html.ValidationMessageFor(model => model.Gmail, "", new { @class = "text-danger" })
+
+            <!--<input type="password" placeholder="Password" name="" />-->
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Enter password", @class = "logingetdetails", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+            <input type="submit" name="" value="login" @*onclick="location.href='@Url.Action("Search","FlightSearch")'"*@ />
+            @*<a href="#">Don't have an account?</a>*@
+            @Html.ActionLink("Don't have an account?","Registration","Registration")
+            <p style="color:red">
+                @ViewBag.Message
+            </p>
+
+        }
+    </div>
+    <div>
+    </div>
+
+</body>
+</html>
+

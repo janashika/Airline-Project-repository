@@ -1,0 +1,122 @@
+﻿
+@model IEnumerable<AirlineTickectBookingMVCProject.Models.FlightChild>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/FlightDetailsDisplay.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />"/>*@
+    <meta charset="utf-8" />
+    <title>Flight Details</title>
+    @*<link href="FlightsDetailsDisplay.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    @*<nav class="navbar navbar-expand-sm   navbar-dark   fixed-top" style="background:transparent;">*@
+
+    <div class="logo-bar" style="position:sticky">
+        <h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">
+
+            <input type="button" value="PREVIOUS" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:2px; " onclick="location.href='@Url.Action("Search","FlightSearch")'" />
+
+            <input type="button" value="HOME" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:800px; " onclick="location.href='@Url.Action("LoginOrSignup","Login")'" />
+            <span style="position:relative;top:10px;color:darkviolet;" class="glyphicon glyphicon-home"></span>
+
+            <input type="button" value="LOG OUT" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:10px; " onclick="location.href='@Url.Action("Login","Login")'" />
+            <span style="position:relative;top:10px;background-color:darkviolet; color:darkviolet;" class="glyphicon glyphicon-share"></span>
+
+
+        </h2>
+    </div>
+
+    @*</nav>*@
+
+
+    <div class="bgHeader">
+        <br />
+        <br />
+        <br />
+        <header>
+            <h1 style="padding:1px;position:relative;padding:30px; font-weight:lighter;font-size:60px;">
+                Flight Details        <img src="~/Content/flight@2x.png" style="width:8%;height:10%;" />
+            </h1>
+        </header>
+
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div class="tblFlights">
+
+        <table class="table table-dark table-hover" ; style="border:2px solid blueviolet">
+            <thead style="background-color:blueviolet;position:sticky">
+                <tr>
+                    <th style="color:white;font-size:25px;font-weight:lighter;"><p1>FLIGHT ID</p1></th>
+                    <th style="color:white;font-size:25px;font-weight:lighter"><p1>DEPARTURE TIME</p1></th>
+                    <th style="color:white;font-size:25px;font-weight:lighter"><p1>ARRIVAL TIME</p1></th>
+                    <th style="color:white;font-size:25px;font-weight:lighter"><p1> DURATION</p1></th>
+                    <th style="color:white;font-size:25px;font-weight:lighter"><p1>FARE </p1></th>
+                    <th style="color:white;font-size:25px;font-weight:lighter"><p1></p1></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <p style="font-size:25px; font-weight:bolder">
+                            <img src="~/Content/flight@2x.png" style="width:20%;height:25%;" />
+                            <span>
+                                @Html.DisplayFor(modelItem => item.Flightid)
+                            </span>
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Departuretime)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Arrivaltime)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Duration)
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Fare)
+                            <sup style="font-size:11px;">INR</sup>
+                        </p>
+                    </td>
+                    <td align="right" height="50px">
+                        <p>
+                            <button id="btnSearchFlights" onclick="location.href='@Url.Action("Booking","FlightSearch",new {id=item.Flightid } )'">
+                                Book
+                            </button>
+                        </p>
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+        <div>
+            <p style="padding:15px; font-weight:bolder;font-size:32px;letter-spacing:2px;margin-left:200px;color:red;">
+                @ViewBag.Message
+            </p>
+
+        </div>
+    </div>
+</body>
+</html>

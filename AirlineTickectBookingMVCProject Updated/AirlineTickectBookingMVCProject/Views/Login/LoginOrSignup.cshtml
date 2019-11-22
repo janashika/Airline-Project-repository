@@ -1,0 +1,40 @@
+﻿@model AirlineTickectBookingMVCProject.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<!--FIRST LOGIN OR SIGNUP PAGE-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="~/Content/FlightBookingLoginOrSignup.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1 class="CompanyLogo">BREEZE</h1>
+    <div class="divLogin">
+        <input type="button" value=" LOGIN" class="btnLogin" onclick="@("window.location.href='"+Url.Action("Login","Login")+"'");" />
+
+    </div>
+
+
+    <div class="divSignup">
+        <input type="button" value="SIGNUP" class="btnSignup" onclick="@("window.location.href='"+Url.Action("Registration","Registration")+"'");" />
+
+        @*<button class="btnSignup">
+                SIGN<br />UP 
+            </button>*@
+    </div>
+
+</body>
+</html>
+
+
+
+
+12

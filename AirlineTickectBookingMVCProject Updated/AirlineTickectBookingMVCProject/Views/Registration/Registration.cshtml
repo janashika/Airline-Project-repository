@@ -1,0 +1,229 @@
+﻿@model AirlineTickectBookingMVCProject.Models.RegistrationModel
+@{
+
+}
+@*<script type="text/javascript">
+
+        function verifyContents() {
+            var x=documents.forms[""]
+            }
+            else {
+
+                window.location.href = '"+Url.Action("--action name--","--controller name--")+"';
+
+            }
+
+
+    </script>*@
+@*<link href="~/SmartAlertFiles/alert/css/alert.min.css" rel="stylesheet" />
+
+    <link href="~/SmartAlertFiles/alert/themes/dark/theme.min.css" rel="stylesheet" />*@
+
+
+
+
+@*@section Scripts {
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+        @Scripts.Render("~/bundles/jqueryui")
+        @Styles.Render("~/Content/cssjqryUi")
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('input[type=datetime]').datepicker({
+                    dateFormat: "dd/M/yy",
+                    changeMonth: true,
+                    changeYear: false,
+                    yearRange: "-60:0"
+                });
+
+            });
+        </script>
+
+    }*@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/RegistrationPageStyleSheet.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+    <script src="~/Content/jqueryrefernce.js"></script>
+
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/SmartAlertFiles/alert/js/alert.js"></script>
+    @*<script>
+
+            $('#DateOfBirth').
+        </script>*@
+    <style>
+        #Background {
+            background-color: white;
+            width: 600px;
+            height: auto;
+            position: relative;
+            left: 45%;
+            box-shadow: 40px 9px darkcyan;
+        }
+
+        .form-control {
+            width: 300px;
+        }
+
+        body {
+            background-image: url('../../Content/RegisterPageBackground.jpg');
+            width: 97%;
+        }
+
+        .ClassSignin {
+            font-size: 60px;
+            text-shadow: 2px 2px grey;
+        }
+
+        #label {
+            color: darkblue;
+            font-size: 22px;
+            font-weight: lighter;
+        }
+
+        .btnSubmit {
+        }
+
+        #btnSubmit {
+            background: transparent;
+            background-color: transparent;
+            border: 1px solid blueviolet;
+            font-size: 26px;
+            font-weight: lighter;
+            font-family: Calibri;
+            color: blueviolet;
+            padding: 10px 15px;
+            border-radius: 0px;
+            width: 170px;
+            position: relative;
+            left: 2.5%;
+        }
+
+            #btnSubmit:hover {
+                background: blueviolet;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Registration", "Registration", FormMethod.Post))
+    {
+        <input type="button" value="HOME" id="btnSubmit" style="border-color:darkviolet;left:6px;position:relative;top:250px; display:inline-block;margin-left:300px;transform:rotate(23deg) " onclick="location.href='@Url.Action("LoginOrSignup","Login")'" />
+         <br />
+        <br />
+        <br />
+        @Html.AntiForgeryToken()
+        <div id="Background">
+            <div class="container">
+                <h1 class="ClassSignin">Sign Up</h1>
+                <p style="font-size:12px;"><b>Please fill all the fields to create an account.</b></p>
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @*@Html.TextBox("FirstName")*@
+
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the First Name", @id = "firstname" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the Last Name" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the Nationlality" } })
+                            @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phonenumber, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Phonenumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the Phone number" } })
+                            @Html.ValidationMessageFor(model => model.Phonenumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            <br />
+                            @Html.RadioButtonFor(model => model.Gender, "Male")<span>Male</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            @Html.RadioButtonFor(model => model.Gender, "Female")<span>Female</span>
+                            @*@Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })*@
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2", @id = "label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "password" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="register">
+
+                    <button id="btnSubmit">
+                        <input style="border:none;background:transparent;" type="submit" value="REGISTER" />
+                    </button>
+
+                </div>
+                @ViewBag.Message
+                <p style="color:dimgrey;font-size:10px; position:relative;left:20%;">
+                    By creating an account you agree to our <a href="#">Terms & Privacy</a>.
+                </p>
+            </div>
+        </div>
+
+    }
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+                window.onload = function () {
+               // window.location.href = "@Url.Action("Login", "Login")";
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+</body>
+</html>
+

@@ -1,0 +1,202 @@
+﻿
+
+@model AirlineTickectBookingMVCProject.Models.PassengersList
+@{
+    ViewBag.Title = "addPassenger";
+}
+@using (Html.BeginForm())
+{
+    <head>
+        <title>
+            BREEZE Airways passenger details
+        </title>
+    </head>
+    <style>
+        body {
+            background-color: powderblue;
+        }
+
+        #btnSearchFlights {
+            background: transparent;
+            background-color: transparent;
+            border: 2px solid blueviolet;
+            font-size: 21px;
+            font-weight: 100;
+            font-family: Calibri;
+            color: blueviolet;
+            padding: 10px 15px;
+            border-radius: 0px;
+        }
+
+            #btnSearchFlights:hover {
+                background: blueviolet;
+                color: white;
+            }
+
+        .headingOfPassengerDetails {
+            font-size: 70px;
+            padding: 20px;
+            text-shadow: 2px 2px lightgrey;
+            color: black;
+        }
+
+        .divOfPassengerDetails {
+            height: 50px;
+            width: 100%;
+        }
+
+        .form-group {
+            position: relative;
+            left: 240px;
+        }
+
+        h4 {
+            font-size: 19px;
+        }
+
+        .divImage {
+            position: absolute;
+            display: inline-block;
+            float: right;
+            left: 800px;
+            top: 350px;
+            width: 800px;
+            height: 800px;
+        }
+        .divImageSolo{
+             position: absolute;
+            display: inline-block;
+            float: right;
+            left: 600px;
+            top: 350px;
+            width: 800px;
+            height: 800px;
+        }
+        .divImage2 {
+            position: absolute;
+            display: inline-block;
+            float: right;
+            left: 800px;
+            top: 800px;
+            width: 800px;
+            height: 800px;
+        }
+    </style>
+    @Html.AntiForgeryToken()
+
+    <body>
+        <div class="divImage">
+            @if (Model.Passangers.Count == 2)
+            {
+                <img src="~/Content/couplePassengerDetailsImage.png" />
+            }
+        </div>
+        <div class="divImage2">
+            @if (Model.Passangers.Count == 2)
+            {
+                <img src="~/Content/couples_png.png" />
+            }
+        </div>
+        <div class="divImageSolo">
+            @if (Model.Passangers.Count == 1)
+            {
+                <img src="~/Content/solo travel.png" />
+            }
+        </div>
+        <div class="divImage">
+            @if (Model.Passangers.Count > 2)
+            {
+                <img src="~/Content/more_than_one_png.png" />
+            }
+        </div>
+ 
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <hr style="color:white" />
+            <div class="logo-bar" style="position:sticky">
+                <h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">
+
+                    <input type="button" value="PREVIOUS" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:2px; " onclick="location.href='@Url.Action("Search","FlightSearch")'" />
+
+                    <input type="button" value="LOG OUT" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:650px; " onclick="location.href='@Url.Action("Login","Login")'" />
+                    <span style="position:relative;top:10px;" class="glyphicon glyphicon-share"></span>
+
+
+                    <input type="button" value="HOME" id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:10px; " onclick="location.href='@Url.Action("LoginOrSignup","Login")'" />
+                    <span style="position:relative;top:10px;" class="glyphicon glyphicon-home"></span>
+
+                </h2>
+            </div>
+            <hr />
+            <div class="divOfPassengerDetails">
+                <h1 class="headingOfPassengerDetails">
+                    <span class="glyphicon glyphicon-th-list"></span>    Passenger Details
+                </h1>
+                <br />
+                <br />
+            </div>
+            <div style="position:relative;left:0px;top:60px;bottom:60px;">
+                @for (int i = 0; i < Model.Passangers.Count; i++)
+                {
+                    <br />
+                    int j = 1 + i;
+                    <h3 style="color:blue; margin-left:60px;">
+                        PASSENGER @j
+                    </h3>
+                    <div class="form-group">
+                        <h4 style="display:inline-block">NAME</h4>
+                        <br />
+                        @*@Html.LabelFor(passengerList => passengerList.Passangers[i].Pa_name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.EditorFor(passengerList => passengerList.Passangers[i].Pa_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Passangers[i].Pa_name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4 style="display:inline-block">AGE</h4>
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Passangers[i].Ps_age, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Passangers[i].Ps_age, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4 style="display:inline-block">GENDER</h4>
+                        <br />
+                        @*@Html.LabelFor(model => model.Passangers[i].Gender,htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.RadioButtonFor(model => model.Passangers[i].Gender, "Male")<span>Male</span>
+                            @Html.RadioButtonFor(model => model.Passangers[i].Gender, "FeMale")<span>Female</span>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4 style="display:inline-block">PHYSICAL DISABILITY<sub>(If so please specify)</sub> </h4><br />
+                        <br />
+                        @*@Html.LabelFor(model => model.Passangers[i].Gender,htmlAttributes: new { @class = "control-label col-md-2" })*@
+                        <div class="col-md-10">
+                            @Html.TextArea("m", htmlAttributes: new { @class = "form-control", @placeholder = "Please specify any need of mobility, medical or anything." })
+                        </div>
+                    </div>
+                }
+            </div>
+            <br />
+            <br />
+            <div class="form-group" style="position:relative;left:100px;top:60px;">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="btnSearchFlights" value="CONFIRM PASSENGERS" class="btn btn-default" />
+                </div>
+            </div>
+            <div>
+                @ViewBag.message
+            </div>
+        </div>
+    </body>
+}
+@*<div>
+        @Html.ActionLink("Addext", "addPassenger")
+    </div>*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
