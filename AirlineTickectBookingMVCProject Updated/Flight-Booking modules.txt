@@ -1,0 +1,5 @@
+1) Login
+2) Registration
+3) Search
+4) Search results
+5) Booking

@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "SendMailToUser";
+}
+
+<h2>SendMailToUser</h2>
+
+<div>
+    <a class="btn btn-danger" onclick="SendEmail()">click Me</a>
+</div>
+<script>
+        var SendEmail = function () {
+            $.ajax({
+                type="post",
+                url="/Mail/SendMailToUser",
+                success: function (data) {
+                    alert("success");
+                }
+            })
+
+        }
+</script>

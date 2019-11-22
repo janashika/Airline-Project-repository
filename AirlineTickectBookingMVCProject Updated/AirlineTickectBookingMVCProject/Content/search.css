@@ -1,0 +1,31 @@
+﻿body {
+    background-image: url("gifForSearching.gif");
+    height: 100%;
+    background-size: cover;
+    background-position-y: 800px;
+}
+
+.heading {
+    position: absolute;
+    left: 575px;
+    top: 250px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.heading1 {
+    position: absolute;
+    left: 575px;
+    top: 285px;
+}
+
+.source {
+    position: absolute;
+    left: 80px;
+    top: 250px;
+}
+
+.destination {
+    position: absolute;
+    left: 1000px;
+    top: 250px;
+}

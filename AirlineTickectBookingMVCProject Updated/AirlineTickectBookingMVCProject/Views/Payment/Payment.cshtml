@@ -1,0 +1,90 @@
+﻿@model AirlineTickectBookingMVCProject.Models.PaymentDetailsModel
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Content/FlightPayment.css" rel="stylesheet" />
+   
+</head>
+
+<body>
+
+    <h1 id="PaymentDetails">PAYMENT DETAILS</h1>
+
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-40">
+                            @Html.Label("Card Holder Name")
+                            @Html.EditorFor(model => model.CardHolderName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CardHolderName, "", new { @class = "text-danger" })
+                            <br />
+
+                            @Html.Label("Credit Card Number")
+                            @Html.EditorFor(model => model.CreditCardNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CreditCardNumber, "", new { @class = "text-danger" })
+                            <br />
+
+
+
+                            <div class="row">
+
+                                @Html.Label("Exp Month")
+                                @Html.DropDownListFor(model => model.ExpMonth,
+                                   Enumerable.Range(1, 12).
+                                   Select(i => new SelectListItem
+                                   {
+                                       Value = i.ToString(),
+                                       Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i)
+                                   }),
+                                       "-- Month --")
+                                @Html.ValidationMessageFor(model => model.ExpMonth)
+                                <br />
+
+                                @Html.Label("Exp Year")
+                                @Html.DropDownListFor(model => model.ExpYear,
+                                  Enumerable.Range(1990, (DateTime.Now.Year + 10) - 1990).
+                                  Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }),
+                                  "-- Year --")
+
+
+                                <br />
+                                <br />
+                                <br />
+
+
+                                <div class="col-40">
+                                    @Html.LabelFor(model => model.Cvv, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Cvv, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Cvv, "", new { @class = "text-danger" })
+                                    <br />
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="SubmitButton">
+                        <input type="button" value="Proceed with payment" class="btnSubmit" />
+                    </div>
+                }
+
+            </div>
+
+            <div>
+                @ViewBag.Message
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

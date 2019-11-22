@@ -1,0 +1,149 @@
+﻿@model IEnumerable<AirlineTickectBookingMVCProject.Models.PreviewModel>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/Contents/bootstrap.css" />*@
+
+
+    
+    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />"/>*@
+    <meta charset="utf-8" />
+    <title>Index</title>
+    @*<link href="FlightsDetailsDisplay.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .tblFlights {
+            width: 500px;
+            position: relative;
+            left: 33%;
+        }
+    </style>
+</head>
+<body>
+    <div class="bgHeader">
+        <br />
+
+        <header>
+            <h2 style="padding:1px;position:relative;padding:30px; left:31.5%; font-weight:lighter;font-size:50px;">
+                <b>Flight Booking Details  </b>     @*<img src="~/Content/flight@2x.png" style="width:8%;height:10%;" />*@
+            </h2>
+        </header>
+
+    </div>
+
+
+    <div class="tblFlights">
+        <center>
+            <table class="table table-dark table-hover" ; style="border:2px solid blueviolet">
+                <thead style="background-color:blueviolet;position:sticky">
+
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>Source</p1></th>
+                        <td>
+                            <p style="font-size:25px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.S_Id)
+
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>Destination</p1></th>
+                        <td>
+                            <p style="font-size:25px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.Des_Id)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>Departure_Time</p1></th>
+                        <td>
+                            <p style="font-size:20px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.Departure_Time)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>Arrival_Time</p1></th>
+
+                        <td>
+                            <p style="font-size:20px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.Arrival_Time)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>No_Of_Passengers</p1></th>
+
+                        <td>
+                            <p style="font-size:20px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.Passenger)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>Booked_Date</p1></th>
+
+                        <td>
+                            <p style="font-size:20px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.Booked_Date)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="color:darkviolet;font-size:25px;font-weight:bolder"><p1>Total_Fare</p1></th>
+
+                        <td>
+                            <p style="font-size:20px; font-weight:bolder">
+                                @Html.DisplayFor(modelItem => item.Fare)
+                                <sup style="font-size:11px;">INR</sup>
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <button id="btnSubmit">
+                                <center>
+                                    <input style="border:none;background:transparent;" type="submit" value="PAY" onclick="location.href='@Url.Action("Payment","Payment",new {fare=item.Fare } )'" />
+                                </center>
+                            </button>
+                            <button id="btnSubmit">
+                                <center>
+                                    <input style="border:none;background:transparent;" type="submit" value="Back" onclick="location.href='@Url.Action("Create","Passenger",new {fare=item.Fare } )'" />
+                                </center>
+                            </button>
+
+                        </td>
+                        <td>
+                            <button id="btnSubmit">
+                                <center>
+                                    <input style="border:none;background:transparent;" type="submit" value="EDIT" onclick="location.href='@Url.Action("Search","FlightSearch",new {fare=item.Fare } )'" />
+                                </center>
+                            </button>
+
+                        </td>
+                    </tr>
+                        
+
+
+
+                            }
+</table>
+            
+        </center>
+    </div>
+                 
+</body>
+</html>

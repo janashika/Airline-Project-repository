@@ -1,0 +1,76 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    background: url("FlightBookingLoginOrSignupBG.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.CompanyLogo {
+    font-size: 75px;
+    color: floralwhite;
+    font-family: Arial;
+    text-shadow: 2px 2px gray;
+    position: relative;
+    left: 85px;
+    top: 30px;
+    letter-spacing: 3px;
+}
+
+.btnLogin {
+    background: transparent;
+    border: 4px solid saddlebrown;
+    color: whitesmoke;
+    padding: 20px;
+    text-align: center;
+    font-size: 50px;
+    text-decoration: none;
+    height: 300px;
+    width: 300px;
+    filter: saturate(90%);
+    border-radius: 50%;
+}
+
+.btnSignup {
+    background: transparent;
+    border: 4px solid green;
+    opacity: 0.9;
+    filter: saturate(90%);
+    color: whitesmoke;
+    padding: 20px;
+    text-align: center;
+    font-size: 60px;
+    text-decoration: none;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+.divLogin {
+    float: left;
+    position: relative;
+    left: 300px;
+    top: 80px;
+    padding-left: 30px;
+}
+
+.divSignup {
+    float: left;
+    position: relative;
+    left: 300px;
+    top: -15px;
+    padding-left: 50px;
+}
+
+.btnLogin:hover {
+    border: 4px solid deepskyblue;
+    border-color: deepskyblue;
+    text-shadow: 2px 2px gray;
+}
+
+.btnSignup:hover {
+    border: 4px solid deepskyblue;
+    border-color: deepskyblue;
+    text-shadow: 2px 2px gray;
+}

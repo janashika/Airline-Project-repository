@@ -1,0 +1,41 @@
+﻿
+@{
+    
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/FlightDetailsDisplay.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-sm   navbar-dark   fixed-top" style="background-color:black;">
+        <div class="logo-bar" style="position:sticky">
+            <h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">GIZBIZ AIRWAYS</h2>
+        </div>
+    </nav>*@
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/FlightDetailsDisplay.css" rel="stylesheet" />
+<nav class="navbar navbar-expand-sm   navbar-dark   fixed-top" style="background-color:black;">
+
+    <div class="logo-bar"  style="position:sticky; height:80px;">
+        @*<h2 style="padding:15px; font-weight:lighter;font-size:32px;letter-spacing:3px;">*@
+        GIZBIZ AIRWAYS
+        <form>
+            <button id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:750px; " onclick="location.href='@Url.Action("Login","Login")'">
+                <span class="glyphicon glyphicon-share"></span>
+                LOG OUT
+            </button>
+        </form>
+        <form>
+            <button id="btnSearchFlights" style="border-color:darkviolet;display:inline-block;margin-left:50px; " onclick="location.href='@Url.Action("Login","Login")'">
+                <span class="glyphicon glyphicon-home"></span>
+                HOME
+            </button>
+        </form>
+         @*</h2>*@
+    </div>
+</nav>
+<div>
+    @RenderBody()
+</div>
